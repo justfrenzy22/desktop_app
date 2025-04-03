@@ -1,9 +1,71 @@
 ﻿<Application x:Class="desktop_app.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:desktop_app"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:local="clr-namespace:desktop_app"
+ StartupUri="MainWindow.xaml">
+  <Application.Resources>
+        <ResourceDictionary>
+            <!-- Colors -->
+            <Color x:Key="SpotifyGreen">#1DB954</Color>
+            <Color x:Key="SpotifyBlack">#121212</Color>
+            <Color x:Key="SpotifyDarkGray">#212121</Color>
+            <Color x:Key="SpotifyLightGray">#535353</Color>
+            <Color x:Key="ControlCenterButton">#1F2937</Color>
+            <Color x:Key="ButtonHoverButton">#364153</Color>
+
+            <!-- Brushes -->
+            <SolidColorBrush x:Key="SpotifyGreenBrush" Color="{StaticResource SpotifyGreen}"/>
+            <SolidColorBrush x:Key="SpotifyBlackBrush" Color="{StaticResource SpotifyBlack}"/>
+            <SolidColorBrush x:Key="SpotifyDarkGrayBrush" Color="{StaticResource SpotifyDarkGray}"/>
+            <SolidColorBrush x:Key="SpotifyLightGrayBrush" Color="{StaticResource SpotifyLightGray}"/>
+            <SolidColorBrush x:Key="ControlCenterButtonBrush" Color="{StaticResource ControlCenterButton}"/>
+            <SolidColorBrush x:Key="ButtonHoverBrush" Color="{StaticResource ButtonHoverButton}" />
+            <!-- ButtonHoverBrush-->
+            
+            <!-- Button Styles -->
+            <Style x:Key="RoundButton" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource SpotifyDarkGrayBrush}"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="6">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource ButtonHoverBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Button">
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="6"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+            <Style TargetType="Slider" >
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="13"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
+            <!-- Play Button Style -->
+            <Style x:Key="PlayButton" TargetType="Button" BasedOn="{StaticResource RoundButton}">
+                <Setter Property="Background" Value="{StaticResource SpotifyGreenBrush}"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Width" Value="60"/>
+                <Setter Property="Height" Value="60"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
